@@ -9,7 +9,7 @@ def clear_console():
 # Muestra mensaje de bienvenida
 def print_welcome_msj():
     clear_console()
-    print("Materia: Elementos de la Investigación Operativa")
+    print("Cátedra: Elementos de la Investigación Operativa")
     print("Alumno: Pablo Funes")
     print("Profesora: Ingeniera Melina Denardi")
     print("Trabajo Práctico Nº2: Resolución de problemas de transporte")
