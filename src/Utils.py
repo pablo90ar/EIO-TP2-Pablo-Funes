@@ -1,4 +1,4 @@
-def confirm_action(action: str):
+def confirm_action(action: str = None):
     response = ""
     while response is "":
         if action:
