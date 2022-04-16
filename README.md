@@ -19,3 +19,4 @@ Aplicación de Python 3 para el cálculo de problemas de optimización de transp
 
 Instrucciones ejecutar la app:
 python ./src/App.py
+PuLP
