@@ -20,7 +20,7 @@ def load_known_exercise(ex_num):
     ex.dest_name = exercise["dest_name"]
     ex.offer_type = exercise["offer_type"]
     ex.demand_type = exercise["demand_type"]
-    ex.cost = exercise["transport_cost"]
+    ex.cost = exercise["cost"]
     ex.offer = exercise["offer"]
     ex.demand = exercise["demand"]
     return ex
@@ -32,5 +32,3 @@ def load_manual_exercise():
     Printer.print_generic_table()
     row_count = input("Ingrese la cantidad de filas (-) (sin contar la columna de las cantidades demandadas)")
     column_count = input("Ingrese la cantidad de columnas (|) sin contar la columna de las cantidades ofrecidas")
-
-
