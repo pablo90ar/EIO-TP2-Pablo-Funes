@@ -1,13 +1,13 @@
 import Printer
 import pprint
 from Exercise import Exercise
-from pulp import *
-import pandas as np
-
+from pulp import LpProblem, LpMinimize, LpStatus, LpVariable, lpSum, value
 pp = pprint.PrettyPrinter()
 
 
+# Esta función toma como parámetro el objeto tipo "Exercise" y realiza el cálculo de optimización con la librería PuLP
 def resolve(ex: Exercise):
+    # Presenta los datos del problema en pantalla
     Printer.clear_console()
     print(ex.orig_type + ": " + str(ex.orig_name))
     print(ex.dest_type + ": " + str(ex.dest_name))
@@ -22,15 +22,19 @@ def resolve(ex: Exercise):
     total_demand = 0
     for i in range(ex.get_column_num()):
         total_demand += ex.demand[i]
-    # Verifica si la función está balanceada o no
+    # Si la función no está balanceada...
     if not (total_offer == total_demand):
+        # Muestra la cantidad total de oferta y la de demanda para evidenciar la falta de balanceo
         print("\nFunción NO balanceada.\nOferta: " + str(total_offer) + "\nDemanda: " + str(total_demand))
+        # Ante la imposibilidad de calcular, vuelve al menú principal
         Printer.press_enter_to("volver al menú")
         return None
+    # Si la función está balanceada...
     else:
+        # Muestra la cantidad total de oferta/demanda
         print("\nFunción balanceada. Cantidad total: " + str(total_offer) + "\n")
 
-    # Muestra los valores de la tabla en formato pedido por PuLP
+    # Muestra los valores del ejercicio en formato pedido por PuLP
     print("\nOrígenes: " + str(ex.orig_name))
     print("\nDestinos: " + str(ex.dest_name))
     offer = {}
@@ -46,9 +50,10 @@ def resolve(ex: Exercise):
         cost.update({ex.orig_name[i]: {}})
         for j in range(ex.get_column_num()):
             cost[ex.orig_name[i]].update({ex.dest_name[j]: ex.cost[i][j]})
-    print("\nCantidades:")
+    print("\nCostos:")
     pp.pprint(cost)
 
+    # Inicia el cálculo del ejercicio
     problem = LpProblem("Transporte", LpMinimize)
     routes = [(i, j) for i in ex.orig_name for j in ex.dest_name]
     amount = LpVariable.dicts("Cantidades", (ex.orig_name, ex.dest_name), 0)
@@ -59,15 +64,15 @@ def resolve(ex: Exercise):
     # Restricciones
     for i in ex.orig_name:
         problem += lpSum(amount[i][j] for j in ex.dest_name) <= offer[i]
-    # Resolución
+    # Resolución final del ejercicio
     problem.solve()
     Printer.clear_console()
     print("-----Solución-----")
     print("Status:", LpStatus[problem.status])
-    # Impresión de la solucion
+    # Impresión de la solución
     for v in problem.variables():
         if v.varValue > 0:
             print(v.name, "=", v.varValue)
     print("El costo mínimo es:", value(problem.objective))
-
+    # Vuelve al menú principal
     Printer.press_enter_to("volver al menú")

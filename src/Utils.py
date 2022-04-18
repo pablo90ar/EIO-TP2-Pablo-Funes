@@ -1,5 +1,8 @@
+# Módulo UTILS:
+# Este módulo almacena funciones utilizadas para validar información y ejecutar flujos de navegación
+# La información a validar proviene del ingreso por teclado del usuario.
 
-
+# Esta función consulta al usuario si está seguro de la acción que seleccionó y devuelve un booleano
 def confirm_action(action: str = None):
     response = ""
     while response is "":
@@ -17,6 +20,7 @@ def confirm_action(action: str = None):
             response = ""
 
 
+# Esta función solicita el ingreso de un número y corrobora que se encuentre dentro de un rango válido parametrizado
 def check_int_input_range(var_name: str, min_value: int, max_value: int):
     msj = var_name + " entre " + str(min_value) + " y " + str(max_value) + ". "
     check_ok = False
@@ -28,43 +32,3 @@ def check_int_input_range(var_name: str, min_value: int, max_value: int):
         else:
             print("Ingreso incorrecto.")
     return int(int_value)
-
-
-def check_int_input(var_name: str, min_value: int = None, max_value: int = None):
-    check_min_ok = False
-    check_max_ok = False
-    check_ok = False
-    int_value = None
-    while not check_ok:
-        msj = var_name
-        if min_value or min_value is 0:
-            msj += " mayor a " + str(min_value)
-        if (min_value or min_value is 0) and (max_value or max_value is 0):
-            msj += " y"
-        if max_value or max_value is 0:
-            msj += " menor a " + str(max_value)
-        msj += " "
-        int_value = input(msj)
-        if int_value.isdigit():
-            int_value = int(int_value)
-            if min_value:
-                if min_value < int_value:
-                    check_min_ok = True
-                else:
-                    check_min_ok = False
-                    print("Ingreso incorrecto.")
-            else:
-                check_min_ok = True
-            if max_value:
-                if max_value > int_value:
-                    check_max_ok = True
-                else:
-                    check_max_ok = False
-                    print("Ingreso incorrecto.")
-            else:
-                check_max_ok = True
-        else:
-            print("Ingreso incorrecto.")
-        if check_min_ok and check_max_ok:
-            check_ok = True
-    return int_value

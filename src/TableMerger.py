@@ -1,4 +1,8 @@
-# auxiliar functions
+# Este módulo fue sacado de internet, y se utiliza para graficar tablas.
+# A diferencia de la popular librería "tabulate", este módulo permite fusionar celdas
+# Esta característica resulta útil para la correcta impresión en consola de la tabla de un ejercicio
+
+# Funciones auxiliares
 def _isInRowspan(y, x, rowspan):
     rowspan_value = 0
     row_i = 0
@@ -97,7 +101,7 @@ def _convertTable(table):  # turns all table elements into strings
     return table
 
 
-# main function
+# Función principal
 def tabulate(tab, colspan=None, rowspan=None):
     if rowspan is None:
         rowspan = {}

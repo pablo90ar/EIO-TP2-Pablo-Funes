@@ -1,5 +1,7 @@
+# Clase Exercise: utilizada para cargar y manipular los datos de un ejercicio que provienen del archivo "Problems.json"
+
+# Referencia de las variables usadas:
 """
-Referencia de las variables usadas:
 +--------------+------------------------------------------------------------+-------------+
 |              |                     dest_type                              |             |
 +--------------+------------------------------------------------------------+-------------+
@@ -35,8 +37,10 @@ class Exercise:
     def __init__(self):
         pass
 
+    # Función que devuelve el número de columnas de la tabla de costos de un ejercicio
     def get_column_num(self):
         return len(self.cost[0])
 
+    # Función que devuelve el número de filas de la tabla de costos de un ejercicio
     def get_row_num(self):
         return len(self.cost)
