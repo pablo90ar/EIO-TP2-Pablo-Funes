@@ -3,6 +3,8 @@ import Utils
 import Loader
 import Resolver
 
+# Módulo APP
+# Este es el archivo raíz del proyecto, y es el que debe ejecutarse para correr el programa
 
 menu_option = 0
 # Mientras no se seleccione la opción 1 ni la opción 2...

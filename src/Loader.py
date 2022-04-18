@@ -1,6 +1,9 @@
 import json
-import Printer
 from Exercise import Exercise
+
+# Módulo LOADER
+# Este módulo contiene funciones orientadas a leer archivos para colocar información en variables
+# Esto le permite al programa manipular dicha información y realizar cálculos
 
 
 # Carga ejercicio de la práctica para ser resuelto y lo devuelve al finalizar

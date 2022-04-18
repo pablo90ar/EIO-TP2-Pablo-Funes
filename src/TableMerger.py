@@ -1,3 +1,4 @@
+# Módulo TABLE MERGER
 # Este módulo fue sacado de internet, y se utiliza para graficar tablas.
 # A diferencia de la popular librería "tabulate", este módulo permite fusionar celdas
 # Esta característica resulta útil para la correcta impresión en consola de la tabla de un ejercicio

@@ -1,11 +1,11 @@
 # Moyano App
-Aplicación de Python 3 para el cálculo de problemas de optimización de transporte por medio del mètodo MODI
+Aplicación de Python 3 para el cálculo de problemas de optimización de transporte con la librería PuLP
 ```
                        _____________________________________________________
                       |                                                     |
-             _______  |                                                     |
-            / _____ | |                      MOYANO APP                     |
-           / /     || |                                                     |
+             _______  |                     +------------+                  |
+            / _____ | |                     | MOYANO APP |                  |
+           / /     || |                     +------------+                  |
   ________/ /      || |                                                     |
  |         |-------|| |                                                     |
 (|         |     -.|| |_______________________                              |
@@ -16,7 +16,10 @@ Aplicación de Python 3 para el cálculo de problemas de optimización de transp
     \__/                   \__/     \__/                    \__/      \__/
 
 ```
+Requerimientos para ejecutar la app:
+Python v3.x
+Git Bash
 
-Instrucciones ejecutar la app:
-python ./src/App.py
+Instrucciones para ejecutar la app:
+bash python ./src/App.py
 PuLP

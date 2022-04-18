@@ -4,6 +4,8 @@ from Exercise import Exercise
 from pulp import LpProblem, LpMinimize, LpStatus, LpVariable, lpSum, value
 pp = pprint.PrettyPrinter()
 
+# Módulo RESOLVER
+# Este módulo contiene funciones utilizadas para la resolución de ejercicios
 
 # Esta función toma como parámetro el objeto tipo "Exercise" y realiza el cálculo de optimización con la librería PuLP
 def resolve(ex: Exercise):
