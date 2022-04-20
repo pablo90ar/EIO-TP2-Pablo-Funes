@@ -3,7 +3,6 @@ from Exercise import Exercise
 from TableMerger import tabulate
 from pprint import PrettyPrinter
 
-
 # Módulo PRINTER:
 # Este módulo almacena funciones utilizadas para mostrar información en consola
 # La información puede ser menús, diálogos, la tabla de un problema, etc.

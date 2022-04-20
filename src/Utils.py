@@ -20,7 +20,8 @@ def confirm_action(action: str = None):
             response = ""
 
 
-# Esta función solicita el ingreso de un número y corrobora que se encuentre dentro de un rango válido parametrizado
+# Esta función solicita el ingreso de un número entero y \
+# corrobora que se encuentre dentro de un rango válido parametrizado
 def check_int_input_range(var_name: str, min_value: int, max_value: int):
     msj = var_name + " entre " + str(min_value) + " y " + str(max_value) + ". "
     check_ok = False
