@@ -10,7 +10,6 @@ pp = pprint.PrettyPrinter()
 
 # Esta función toma como parámetro el objeto tipo "Exercise" y realiza el cálculo de optimización con la librería PuLP
 def resolve(ex: Exercise):
-    # TODO: MOVER PRESENTACION DE DATOS A Printer
     # Borra la consola
     Printer.clear_console()
     Printer.print_exercise_title(ex.number)
@@ -32,27 +31,6 @@ def resolve(ex: Exercise):
             cost[ex.orig_name[i]].update({ex.dest_name[j]: ex.cost[i][j]})
     print("\nCostos:")
     pp.pprint(cost)
-
-    # TODO: MOVER CHECKEO A Utils
-    # Suma toda la oferta
-    total_offer = 0
-    for i in range(ex.get_row_num()):
-        total_offer += ex.offer[i]
-    # Suma toda la demanda
-    total_demand = 0
-    for i in range(ex.get_column_num()):
-        total_demand += ex.demand[i]
-    # Si la función no está balanceada...
-    if not (total_offer == total_demand):
-        # Muestra la cantidad total de oferta y la de demanda para evidenciar la falta de balanceo
-        print("\nFunción NO balanceada.\nOferta: " + str(total_offer) + "\nDemanda: " + str(total_demand))
-        # Ante la imposibilidad de calcular, vuelve al menú principal
-        Printer.press_enter_to("volver al menú")
-        return None
-    # Si la función está balanceada...
-    else:
-        # Muestra la cantidad total de oferta/demanda
-        print("\nFunción balanceada. Cantidad total: " + str(total_offer) + "\n")
 
     # Inicia el cálculo del ejercicio
     problem = LpProblem("Transporte", LpMinimize)

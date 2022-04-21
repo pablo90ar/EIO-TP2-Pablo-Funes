@@ -31,6 +31,7 @@ def load_known_exercise(ex_num):
     ex.cost = exercise["cost"]
     ex.offer = exercise["offer"]
     ex.demand = exercise["demand"]
+
     return ex
 
 
@@ -39,10 +40,10 @@ def load_custom_exercise():
     Printer.print_generic_table()
     # Se crea un objeto tipo "Exercise" vacío y se lo llena con los valores del ejercicio elegido
     ex = Exercise()
-    ex.orig_type = input("Paso 1/11 - Ingrese el tipo de origen. Valor por defecto: [Orígenes]") or "Orígenes"
-    ex.dest_type = input("Paso 2/11 - Ingrese el tipo de destino. Valor por defecto: [Destinos]") or "Destinos"
-    ex.offer_type = input("Paso 3/11 - Ingrese el tipo de oferta. Valor por defecto: [Oferta]") or "Oferta"
-    ex.demand_type = input("Paso 4/11 - Ingrese el tipo de demanda. Valor por defecto: [Demanda]") or "Demanda"
+    ex.orig_type = input("Paso 1/11 - Ingrese el tipo de origen. Valor por defecto: [Orígenes] ") or "Orígenes"
+    ex.dest_type = input("Paso 2/11 - Ingrese el tipo de destino. Valor por defecto: [Destinos] ") or "Destinos"
+    ex.offer_type = input("Paso 3/11 - Ingrese el tipo de oferta. Valor por defecto: [Oferta] ") or "Oferta"
+    ex.demand_type = input("Paso 4/11 - Ingrese el tipo de demanda. Valor por defecto: [Demanda] ") or "Demanda"
     orig_number = int(
         input("Paso 5/11 - Ingrese la cantidad de orígenes (filas) de la tabla. Valor por defecto: [3] ") or 3)
     dest_number = int(

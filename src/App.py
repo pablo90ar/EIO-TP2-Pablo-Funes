@@ -23,9 +23,12 @@ while menu_option < 3:
         ex = Loader.load_known_exercise(exercise_num)
         # Se muestra el ejercicio elegido en pantalla
         Printer.print_exercise(ex)
-        # TODO CHECKEAR BALANCEO
-        # Resuelve el ejercicio y presenta los resultados
-        Resolver.resolve(ex)
+        Printer.press_enter_to("iniciar la resolución")
+        ex_data_ok = Utils.check_data_completeness(ex) and Utils.check_data_balance(ex)
+        if ex_data_ok:
+            # Resuelve el ejercicio y presenta los resultados
+            Resolver.resolve(ex)
+
     # Si la opción elegida es la 2...
     elif menu_option == 2:
         # Borra la pantalla
@@ -35,9 +38,11 @@ while menu_option < 3:
         ex = Loader.load_custom_exercise()
         Printer.clear_console()
         Printer.print_dynamic_table(ex)
-        input()
-        # TODO CHECKEAR BALANCEO
-        # TODO RESOLVER
+        Printer.press_enter_to("iniciar la resolución")
+        ex_data_ok = Utils.check_data_balance(ex)
+        if ex_data_ok:
+            # Resuelve el ejercicio y presenta los resultados
+            Resolver.resolve(ex)
     # Si la opción elegida es la 3...
     elif menu_option == 3:
         # Solicita confirmar la acción

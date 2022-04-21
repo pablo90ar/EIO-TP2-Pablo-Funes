@@ -1,6 +1,5 @@
 import os
 from copy import deepcopy
-
 from Exercise import Exercise
 from TableMerger import tabulate
 from pprint import PrettyPrinter
@@ -63,9 +62,9 @@ def press_enter_to(action="continuar"):
 
 
 # Imprime una tabla completa aceptando un objeto Exercise como parámetro
-def print_dynamic_table(exercise: Exercise):
+def print_dynamic_table(ex: Exercise):
     # Inserta dest_type como título de destinos
-    ex = deepcopy(exercise)
+    ex = deepcopy(ex)
     header1 = [" ", ex.dest_type]
     for item in range(len(ex.dest_name)):
         header1.append(" ")
@@ -121,7 +120,6 @@ def print_exercise(ex: Exercise):
     pp.pprint(ex.pre_prompt)
     print_dynamic_table(ex)
     pp.pprint(ex.post_prompt)
-    press_enter_to("iniciar la resolución")
 
 
 # Imprime el número del ejercicio
