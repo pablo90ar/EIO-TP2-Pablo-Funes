@@ -10,13 +10,30 @@ pp = pprint.PrettyPrinter()
 
 # Esta función toma como parámetro el objeto tipo "Exercise" y realiza el cálculo de optimización con la librería PuLP
 def resolve(ex: Exercise):
-    # Presenta los datos del problema en pantalla
+    # TODO: MOVER PRESENTACION DE DATOS A Printer
+    # Borra la consola
     Printer.clear_console()
-    print(ex.orig_type + ": " + str(ex.orig_name))
-    print(ex.dest_type + ": " + str(ex.dest_name))
-    print(ex.offer_type + ": " + str(ex.offer))
-    print(ex.demand_type + ": " + str(ex.demand))
+    Printer.print_exercise_title(ex.number)
+    # Muestra los valores del ejercicio en formato pedido por PuLP
+    print("\nOrígenes: " + str(ex.orig_name))
+    print("\nDestinos: " + str(ex.dest_name))
+    offer = {}
+    for i in range(ex.get_row_num()):
+        offer.update({ex.orig_name[i]: ex.offer[i]})
+    print("\nOferta: " + str(offer))
+    demand = {}
+    for i in range(ex.get_column_num()):
+        demand.update({ex.dest_name[i]: ex.demand[i]})
+    print("\nDemanda: " + str(demand))
+    cost = {}
+    for i in range(ex.get_row_num()):
+        cost.update({ex.orig_name[i]: {}})
+        for j in range(ex.get_column_num()):
+            cost[ex.orig_name[i]].update({ex.dest_name[j]: ex.cost[i][j]})
+    print("\nCostos:")
+    pp.pprint(cost)
 
+    # TODO: MOVER CHECKEO A Utils
     # Suma toda la oferta
     total_offer = 0
     for i in range(ex.get_row_num()):
@@ -37,25 +54,6 @@ def resolve(ex: Exercise):
         # Muestra la cantidad total de oferta/demanda
         print("\nFunción balanceada. Cantidad total: " + str(total_offer) + "\n")
 
-    # Muestra los valores del ejercicio en formato pedido por PuLP
-    print("\nOrígenes: " + str(ex.orig_name))
-    print("\nDestinos: " + str(ex.dest_name))
-    offer = {}
-    for i in range(ex.get_row_num()):
-        offer.update({ex.orig_name[i]: ex.offer[i]})
-    print("\nOferta: " + str(offer))
-    demand = {}
-    for i in range(ex.get_column_num()):
-        demand.update({ex.dest_name[i]: ex.demand[i]})
-    print("\nDemanda: " + str(demand))
-    cost = {}
-    for i in range(ex.get_row_num()):
-        cost.update({ex.orig_name[i]: {}})
-        for j in range(ex.get_column_num()):
-            cost[ex.orig_name[i]].update({ex.dest_name[j]: ex.cost[i][j]})
-    print("\nCostos:")
-    pp.pprint(cost)
-
     # Inicia el cálculo del ejercicio
     problem = LpProblem("Transporte", LpMinimize)
     routes = [(i, j) for i in ex.orig_name for j in ex.dest_name]
@@ -67,10 +65,12 @@ def resolve(ex: Exercise):
     # Restricciones
     for i in ex.orig_name:
         problem += lpSum(amount[i][j] for j in ex.dest_name) <= offer[i]
+    Printer.press_enter_to("calcular y mostrar los resultados")
     # Resolución final del ejercicio
     problem.solve()
     Printer.clear_console()
-    print("-----Solución-----")
+    Printer.print_exercise_title(ex.number)
+    print("Solución:")
     print("Status:", LpStatus[problem.status])
     # Impresión de la solución
     for v in problem.variables():

@@ -7,30 +7,42 @@ import Resolver
 # Este es el archivo raíz del proyecto, y es el que debe ejecutarse para correr el programa
 
 menu_option = 0
+Printer.print_welcome_msj()
 # Mientras no se seleccione la opción 1 ni la opción 2...
-while menu_option < 2:
+while menu_option < 3:
     # Imprime el menú principal en pantalla y espera la elección del usuario
     menu_option = Printer.print_main_menu()
     # Si la opción elegida es la 1...
-    if menu_option is 1:
+    if menu_option == 1:
         # Borra la pantalla
         Printer.clear_console()
         # Se lee el número de ejercicio que se desea cargar
         print("Resolver un ejercicio de la práctica.\n")
-        exercise_num = Utils.check_int_input_range("Ingrese el número de ejercicio que desea resolver ", 1, 9)
-        # Se carga el ejercicio para ser presentado
-        printable_ex = Loader.load_known_exercise(exercise_num)
-        # Se muestra el ejercicio elegido en pantalla
-        Printer.print_exercise(printable_ex)
+        exercise_num = Utils.check_int_input_range("Ingrese el ejercicio a resolver", 1, 9)
         # Carga valores del ejercicio para calcular
         ex = Loader.load_known_exercise(exercise_num)
+        # Se muestra el ejercicio elegido en pantalla
+        Printer.print_exercise(ex)
+        # TODO CHECKEAR BALANCEO
         # Resuelve el ejercicio y presenta los resultados
         Resolver.resolve(ex)
     # Si la opción elegida es la 2...
-    elif menu_option is 2:
+    elif menu_option == 2:
+        # Borra la pantalla
+        Printer.clear_console()
+        # Se inicia la carga manual
+        print("Resolver un ejercicio ingresando datos manualmente.\n")
+        ex = Loader.load_custom_exercise()
+        Printer.clear_console()
+        Printer.print_dynamic_table(ex)
+        input()
+        # TODO CHECKEAR BALANCEO
+        # TODO RESOLVER
+    # Si la opción elegida es la 3...
+    elif menu_option == 3:
         # Solicita confirmar la acción
         confirm_exit = Utils.confirm_action("salir")
-        # Si cancela la opcion...
+        # Si cancela la opción...
         if not confirm_exit:
             # Vuelve al menú principal
             menu_option = 0

@@ -112,7 +112,8 @@
       "cost": [[8,5,2,7,3,9],[5,7,4,5,8,6],[9,3,6,4,2,7],[4,8,2,5,1,9]],
       "demand": [70,130,140,150,150,190],
       "offer": [100,250,300,180]
-    },  {
+    },
+    {
       "number": 9,
       "pre_prompt": "Los tres bancos de sangre del condado de Franklin son coordinados por una oficina central que suministra sangre a cuatro hospitales de la región. El costo de envío, en pesos, de un recipiente estándar de sangre de cada banco a cada hospital se muestran en la tabla siguiente:",
       "post_prompt": "¿Cuántos envíos deberán hacerse de cada banco de sangre a cada hospital de modo que los costos de envío totales se reduzcan al mínimo? Encontrar la solución básica factible inicial por mínimo costo y luego optimizar (como máximo realizar dos pasos del MODI).",

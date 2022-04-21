@@ -4,7 +4,7 @@
 # Clase Exercise: utilizada para cargar y manipular los datos de un ejercicio que provienen del archivo "Problems.json"
 # Esta clase define el esquema, estructura o molde de la tabla de asignación de un ejercicio práctico
 class Exercise:
-    number: int  # El número de ejercicio en la guía
+    number: int = 0  # El número de ejercicio en la guía
     pre_prompt: str  # Consigna del problema antes de la tabla
     post_prompt: str  # Consigna del problema después de la tabla
     orig_type: str  # Nombre de la columna orígen
@@ -16,11 +16,20 @@ class Exercise:
     cost: list  # cost[i][j] Es el valor del costo de transporte en el casillero con coordenada "ij"
     demand: list  # Lista de cantidades demandadas en destinos
     offer: list  # Lista de cantidades disponibles en orígenes
-    i: int  # Posición horizontal de coordenadas
-    j: int  # Posición vertical de coordenadas
 
     def __init__(self):
-        pass
+        self.number = 0
+        self.pre_prompt = ""
+        self.post_prompt = ""
+        self.orig_type = ""
+        self.orig_name = []
+        self.dest_type = ""
+        self.dest_name = []
+        self.offer_type = ""
+        self.demand_type = ""
+        self.cost = []
+        self.demand = []
+        self.offer = []
 
     # Función que devuelve el número de columnas de la tabla de costos de un ejercicio
     def get_column_num(self):

@@ -5,7 +5,7 @@
 # Esta función consulta al usuario si está seguro de la acción que seleccionó y devuelve un booleano
 def confirm_action(action: str = None):
     response = ""
-    while response is "":
+    while response == "":
         if action:
             print("¿Confirma que desea " + action + "?")
         else:
