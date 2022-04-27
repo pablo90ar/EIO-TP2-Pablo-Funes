@@ -1,11 +1,8 @@
 import json
-import pprint
-from copy import deepcopy
 
 import Printer
 import Utils
 from Exercise import Exercise
-
 
 # Módulo LOADER
 # Este módulo contiene funciones orientadas a leer archivos para colocar información en variables
@@ -17,7 +14,6 @@ def load_known_exercise(ex_num):
     # Se abre el archivo "Problems.json" que contiene los ejercicios de la práctica
     with open('./src/Problems.json', encoding="utf-8") as file:
         exercise = json.load(file)["data"][ex_num - 1]
-
     # Se crea un objeto tipo "Exercise" vacío y se lo llena con los valores del ejercicio elegido
     ex = Exercise()
     ex.number = exercise["number"]
@@ -32,7 +28,6 @@ def load_known_exercise(ex_num):
     ex.cost = exercise["cost"]
     ex.offer = exercise["offer"]
     ex.demand = exercise["demand"]
-
     return ex
 
 

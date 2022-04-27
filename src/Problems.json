@@ -57,7 +57,7 @@
       "demand": [300,200,200],
       "offer": [100,300,300]
     },
-     {
+    {
       "number": 5,
       "pre_prompt": "Realizar el mismo problema anterior pero encontrar la solución básica factible inicial por método del mínimo costo y luego optimizar (como máximo realizar dos pasos del MODI).",
       "post_prompt": "",

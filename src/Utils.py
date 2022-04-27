@@ -25,7 +25,7 @@ def confirm_action(action: str = None):
 
 
 # Esta función solicita el ingreso de un número entero y \
-# Corrobora que se encuentre dentro de un rango válido parametrizado
+# Corrobora que un dato de teclado se encuentre dentro de un rango válido parametrizado
 def check_int_input_range(var_name: str, min_value: int, max_value: int):
     msj = var_name + " entre " + str(min_value) + " y " + str(max_value) + ". "
     check_ok = False
@@ -39,6 +39,7 @@ def check_int_input_range(var_name: str, min_value: int, max_value: int):
     return int(int_value)
 
 
+# Corrobora que un dato de teclado sea entero y positivo
 def check_int_input_positive(msj: str):
     check_ok = False
     int_value = None

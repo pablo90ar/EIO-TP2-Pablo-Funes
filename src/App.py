@@ -12,7 +12,7 @@ Printer.print_welcome_msj()
 while menu_option < 3:
     # Imprime el menú principal en pantalla y espera la elección del usuario
     menu_option = Printer.print_main_menu()
-    # Si la opción elegida es la 1...
+    # Si la opción elegida es la 1 resuelve ejercicio de la guía...
     if menu_option == 1:
         # Borra la pantalla
         Printer.clear_console()
@@ -28,8 +28,7 @@ while menu_option < 3:
         if ex_data_ok:
             # Resuelve el ejercicio y presenta los resultados
             Resolver.resolve(ex)
-
-    # Si la opción elegida es la 2...
+    # Si la opción elegida es la 2 resuelve ejercicio personalizado...
     elif menu_option == 2:
         # Borra la pantalla
         Printer.clear_console()
@@ -43,7 +42,7 @@ while menu_option < 3:
         if ex_data_ok:
             # Resuelve el ejercicio y presenta los resultados
             Resolver.resolve(ex)
-    # Si la opción elegida es la 3...
+    # Si la opción elegida es la 3 solicita confirmación de salida...
     elif menu_option == 3:
         # Solicita confirmar la acción
         confirm_exit = Utils.confirm_action("salir")
