@@ -7,4 +7,3 @@ Git Bash (Windows)
 
 Instrucciones para ejecutar la app:
 bash python ./src/App.py
-PuLP
