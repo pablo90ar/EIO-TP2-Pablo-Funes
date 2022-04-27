@@ -3,6 +3,7 @@ import pprint
 from copy import deepcopy
 
 import Printer
+import Utils
 from Exercise import Exercise
 
 
@@ -60,19 +61,19 @@ def load_custom_exercise():
                                   + ". Valor por defecto: [Destino-" + num + "] ") or "Destino-" + num)
     for i in range(orig_number):
         num = str(i + 1)
-        ex.offer.append(int(input("Paso 9/11 - Dato " + str(num) + "/" + str(orig_number)
-                                  + " - Ingrese la cantidad total ofrecida para el origen " +
-                                  ex.orig_name[i] + ". Valor por defecto [0] ") or 0))
+        input_msj = "Paso 9/11 - Dato " + str(num) + "/" + str(orig_number) \
+                    + " - Ingrese la cantidad total ofrecida por el origen " + ex.orig_name[i] + ". "
+        ex.offer.append(Utils.check_int_input_positive(input_msj))
     for j in range(dest_number):
         num = str(j + 1)
-        ex.demand.append(int(input("Paso 10/11 - Dato " + str(num) + "/" + str(dest_number)
-                                   + " - Ingrese la cantidad total demandada desde el destino " +
-                                   ex.dest_name[j] + ". Valor por defecto [0] ") or 0))
+        input_msj = "Paso 10/11 - Dato " + str(num) + "/" + str(dest_number) \
+                    + " - Ingrese la cantidad total demandada desde el destino " + ex.dest_name[j] + "."
+        ex.demand.append(Utils.check_int_input_positive(input_msj))
     for i in range(orig_number):
         ex.cost.append([])
         for j in range(dest_number):
-            ex.cost[i].append(int(input("Paso 11/11 - Dato " + str(i * dest_number + j + 1)
-                                        + "/" + str(orig_number * dest_number)
-                                        + " Ingrese el costo de traslado desde " + ex.orig_name[i] + " hasta " +
-                                        ex.dest_name[j] + ". Valor por defecto [0] ") or 0))
+            input_msj = "Paso 11/11 - Dato " + str(i * dest_number + j + 1) + "/" \
+                        + str(orig_number * dest_number) + " Ingrese el costo de traslado desde " \
+                        + ex.orig_name[i] + " hasta " + ex.dest_name[j] + "."
+            ex.cost[i].append(Utils.check_int_input_positive(input_msj))
     return ex

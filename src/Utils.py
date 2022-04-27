@@ -39,6 +39,18 @@ def check_int_input_range(var_name: str, min_value: int, max_value: int):
     return int(int_value)
 
 
+def check_int_input_positive(msj: str):
+    check_ok = False
+    int_value = None
+    while not check_ok:
+        int_value = input(msj)
+        if int_value.isdigit() and int(int_value) >= 0:
+            check_ok = True
+        else:
+            print("Ingreso incorrecto. Ingrese Un número igual o mayor a cero.")
+    return int(int_value)
+
+
 # comprueba si los datos de un ejercicio obedecen a una matriz rectangular
 def check_data_completeness(ex: Exercise):
     rows = ex.get_row_num()
